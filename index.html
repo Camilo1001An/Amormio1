@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta de Amor</title>
+
+    <!-- Fuente elegante -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <!-- Partículas Animadas -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    
+    <style>
+        :root {
+            --rosa: #d6336c;
+            --vino: #7a1c3a;
+            --fondo: #fff0f6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            background: radial-gradient(circle, #ffe3ec, #f8cdda);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Playfair Display', serif;
+            overflow: hidden;
+        }
+
+        /* CONTENEDOR */
+        .contenedor {
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* BOTÓN SORPRESA */
+        .boton {
+            background: linear-gradient(135deg, #ff758f, #d6336c);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .boton:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+        }
+
+        /* CARTA */
+        .carta {
+            background: #fffafc;
+            max-width: 650px;
+            margin: auto;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border: 2px solid #f1c0d6;
+            opacity: 0;
+            transform: scale(0.9) translateY(30px);
+            transition: all 1s ease;
+            display: none;
+        }
+
+        /* CUANDO SE ACTIVA */
+        .carta.activa {
+            display: block;
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        /* TÍTULO */
+        .carta h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 48px;
+            color: var(--vino);
+            margin-bottom: 25px;
+        }
+
+        /* TEXTO */
+        .carta p {
+            font-size: 18px;
+            line-height: 1.9;
+            color: #4a2c2a;
+            text-align: justify;
+        }
+
+        /* FIRMA */
+        .firma {
+            margin-top: 40px;
+            text-align: right;
+            font-style: italic;
+            color: var(--vino);
+        }
+
+        /* CORAZÓN ANIMADO */
+        .corazon {
+            text-align: center;
+            font-size: 36px;
+            color: #ffffff; /* Cambié a blanco */
+            margin-top: 20px;
+            animation: latido 1.5s infinite;
+        }
+
+        @keyframes latido {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .carta {
+                padding: 25px;
+            }
+
+            .carta h1 {
+                font-size: 36px;
+            }
+
+            .carta p {
+                font-size: 16px;
+            }
+        }
+
+        /* Partículas */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Animación del icono de nutria */
+        .icon-nutria {
+            width: 80px;
+            height: 80px;
+            animation: floating 3s ease-in-out infinite;
+            margin-top: 30px;
+        }
+
+        /* Animación del icono de corazón blanco */
+        .icon-corazon {
+            width: 60px;
+            height: 60px;
+            animation: floating 3s ease-in-out infinite;
+            margin-top: 30px;
+        }
+
+        .icon-milo{
+            width: 30px;
+            height: 30px;
+        }
+
+
+        @keyframes floating {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Ocultar el reproductor de audio */
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="contenedor">
+        <button class="boton" onclick="abrirCarta()">💌 Toca para abrir la carta</button>
+
+        <div class="carta" id="carta">
+            <h1>Amor Mío</h1>
+
+            <p>
+                Desde el día que te conocí, me has convertido en el hombre mas feliz, deseo mucho poder compartir una vida contigo y poder cumplir nuestras metas juntos.
+            </p>
+
+            <p>
+                Se que no soy el hombre perfecto, o el mejor hombre del mundo, pero por ti he venido creciendo como persona y como pareja.
+            </p>
+
+            <p>
+                Te pido perdón por mis fallas, en mis planes no está lastimarte en ningún momento, no quiero verte lejos de mí, nunca olvides el amor que siento por ti y lo importante que eres para mí, te amo y te amare siempre.
+            </p>
+
+            <p>
+                Estamos a muy pocos días de terminar el año, espero poder terminarlo junto a ti.
+            </p>
+
+            <div class="firma">
+                Con todo mi corazón,<br>
+                Milo.
+                <br>
+                <img src="./img/hombre.png" alt="milo" class="icon-milo">
+            </div>
+
+            <div class="corazon">♥</div>
+
+<!-- Icono de corazón blanco -->
+            <img src="./img/amor.png.png" alt="corazón blanco" class="icon-corazon">
+
+            <!-- Icono de nutria -->
+            <img src="./img/nutria.png.png" alt="nutria" class="icon-nutria">
+
+            
+        </div>
+    </div>
+
+    <!-- Música (oculta el reproductor) -->
+    <audio controls autoplay>
+        <source src="Y_Cambio_Mi_Suerte_Virlan_Garcia.mp3" type="audio/mp3">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <!-- Partículas Animadas -->
+    <div id="particles-js"></div>
+
+    <script>
+        // Partículas animadas con particles.js
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 50,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ff66b2"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#ffffff"
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": true,
+                    "anim": {
+                        "enable": true,
+                        "speed": 1,
+                        "opacity_min": 0.1
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": true,
+                        "speed": 2,
+                        "size_min": 0.1
+                    }
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 3,
+                    "direction": "random",
+                    "random": true,
+                    "out_mode": "out"
+                }
+            },
+            "interactivity": {
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+
+        // Función para abrir la carta
+        function abrirCarta() {
+            document.querySelector(".boton").style.display = "none";
+            document.getElementById("carta").classList.add("activa");
+        }
+    </script>
+
+</body>
+</html>
